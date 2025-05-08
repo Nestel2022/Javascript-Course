@@ -1,6 +1,7 @@
+"use strict";
 console.log("%cNarrowing", "color: #3913B8; font-size: 20px;");
 console.log("%c1. Typeof Narrowing", "color: #229179; font-size: 16px;");
-var newMessage = "Hello World";
+let newMessage = "Hello World";
 console.log(typeof newMessage); // Will return "string"
 /**
  * Takes a string and adds "padding" to the left.
@@ -14,7 +15,7 @@ function padLeft(value, padding) {
     if (typeof padding === "string") {
         return padding + value;
     }
-    throw new Error("Expected string or number, got '".concat(typeof padding, "'."));
+    throw new Error(`Expected string or number, got '${typeof padding}'.`);
 }
 console.log(padLeft("Hello world", 4)); // returns "    Hello world"
 /**
@@ -29,7 +30,7 @@ function padLeftUnion(value, padding) {
     if (typeof padding === "string") {
         return padding + value;
     }
-    throw new Error("Expected string or number, got '".concat(typeof padding, "'."));
+    throw new Error(`Expected string or number, got '${typeof padding}'.`);
 }
 console.log(padLeft("Hello world", "        "));
 //padLeftUnion("Hello world", boolean); // error as it's not an expected type
@@ -59,10 +60,10 @@ function getSmallPet() {
     return {
         swim: function () {
             console.log("swimming");
-        }
+        },
     };
 }
-var pet = getSmallPet();
+let pet = getSmallPet();
 move(pet);
 console.log("%c4. Type Predicate Narrowing", "color: #229179; font-size: 16px;");
 function isFish(pet) {
